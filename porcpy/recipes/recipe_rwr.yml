@@ -3,10 +3,10 @@ documentation:
   description: Dry spell relative warming rate (Gallego-Elvira et al, 2019).
 
   authors:
-    - gall_be
+    - gallego-elvira_belen
 
   maintainer:
-    - gall_be
+    - gallego-elvira_belen
 
 
 preprocessors:

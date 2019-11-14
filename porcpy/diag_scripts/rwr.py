@@ -12,12 +12,12 @@ from esmvaltool.diag_scripts.shared import (
     group_metadata, select_metadata,
     get_diagnostic_filename, get_plot_filename)
 
-from dry_spells.geo_grid import read_grid
-import dry_spells.file_io as fio
-import dry_spells.utc_to_lt as utc
-from dry_spells.dry_spells import make_dry_spells
-from dry_spells.common_analysis import make_analysis
-from dry_spells.common_plots import common_plot_rwr_map
+from dry_spell_rwr.geo_grid import read_grid
+import dry_spell_rwr.file_io as fio
+import dry_spell_rwr.utc_to_lt as utc
+from dry_spell_rwr.dry_spells import make_dry_spells
+from dry_spell_rwr.common_analysis import make_analysis
+from dry_spell_rwr.common_plots import common_plot_rwr_map
 
 
 logger = logging.getLogger(os.path.basename(__file__))
@@ -110,7 +110,7 @@ def _get_provenance_record(attributes, ancestor_files):
 
 def make_daily_var(cfg, input_data, short_name, getweights, metadata,
                    scale=1, offset=0):
-    """Wrapper for dry_spells.utc_to_lt.make_daily_var() to derive some
+    """Wrapper for dry_spell_rwr.utc_to_lt.make_daily_var() to derive some
     args from the ESMValTool config.
     """
 
