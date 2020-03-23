@@ -1,0 +1,35 @@
+---
+documentation:
+  description: Hot day occurrence.
+
+  authors:
+    - gallego-elvira_belen
+
+  maintainer:
+    - gallego-elvira_belen
+
+preprocessors:
+  waterunits:
+    convert_units:
+      units: kg m-2 d-1
+
+datasets:
+  - {dataset: CNRM-CM5, project: CMIP5, exp: amip, ensemble: r1i1p1}
+  - {dataset: MIROC5, project: CMIP5, exp: amip, ensemble: r1i1p1}
+
+diagnostics:
+  hot_days:
+    description: Hot day occurrence.
+    variables:
+      tas: &var_opt
+        mip: day
+        start_year: 1980
+        end_year: 1983
+        quantile: 0.9
+      pr:
+        <<: *var_opt
+        preprocessor: waterunits
+
+    scripts:
+      hot_days:
+        script: diag_scripts/hot_days_drive.py
