@@ -89,7 +89,7 @@ def calc_hot_days(tas_filename, tas_varname, nhd_filename, quantile=0.9):
         "nhd": nhd,
         "lon_bnds": dset_in["lon_bnds"],
         "lat_bnds": dset_in["lat_bnds"],
-    })
+    }, attrs=dset_in.attrs)
 
     dset_out.to_netcdf(nhd_filename)
 
@@ -128,7 +128,7 @@ def calc_acc_pr(pr_filename, pr_varname, prm_filename, season):
         "pr": prm.compute(),
         "lon_bnds": dset_in["lon_bnds"],
         "lat_bnds": dset_in["lat_bnds"],
-    })
+    }, attrs=dset_in.attrs)
 
     dset_out.to_netcdf(prm_filename)
 
