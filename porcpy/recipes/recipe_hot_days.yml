@@ -9,13 +9,17 @@ documentation:
     - gallego-elvira_belen
 
 preprocessors:
+  landonly: &landonly
+    mask_landsea:
+      mask_out: sea
   waterunits:
+    <<: *landonly
     convert_units:
       units: kg m-2 d-1
 
 datasets:
   - {dataset: CNRM-CM5, project: CMIP5, exp: amip, ensemble: r1i1p1}
-  - {dataset: MIROC5, project: CMIP5, exp: amip, ensemble: r1i1p1}
+  - {dataset: HadGEM2-A, project: CMIP5, exp: amip, ensemble: r1i1p1}
 
 diagnostics:
   hot_days:
@@ -26,6 +30,7 @@ diagnostics:
         start_year: 1980
         end_year: 1983
         quantile: 0.9
+        preprocessor: landonly
       pr:
         <<: *var_opt
         preprocessor: waterunits
