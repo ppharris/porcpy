@@ -284,7 +284,7 @@ def make_diag_tci(cfg, dataset, input_data,
     sm_meta = select_metadata(input_data, short_name=sm_name)[0]
     hf_meta = select_metadata(input_data, short_name=hf_name)[0]
 
-    sm_meta["standard_name"] = "depth_integrated_moisture_content_of_soil_layer"
+    sm_meta["standard_name"] = "depth_integrated_moisture_content_of_soil_layer"  # noqa
 
     tci_meta = sm_meta.copy()
     tci_meta["short_name"] = tci_name

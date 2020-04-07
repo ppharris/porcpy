@@ -131,14 +131,18 @@ def make_plots(cfg, dataset, data, nhd_file, prm_files):
 
     args = [tas_meta["quantile"] * 100, model_desc]
 
-    title_scatter = ("Number of hot days (tas > Q{:2.0f}) vs antecedent mean precipitation"  # noqa
+    title_scatter = ("Number of hot days (tas > Q{:2.0f}) vs "
+                     "antecedent mean precipitation"
                      "\n{:s}".format(*args))
 
     title_rmaps = ("Correlation coefficient for number of hot days (tas > Q{:2.0f}) vs "  # noqa
-                   "antecedent mean precipitation\n{:s}".format(*args))
+                   "antecedent mean precipitation"
+                   "\n{:s}".format(*args))
 
-    hot.plot_scatter(nhd_file, prm_files, filename_scatter, title=title_scatter)
-    hot.plot_rmaps(nhd_file, prm_files, filename_maps, title=title_rmaps)
+    hot.plot_scatter(nhd_file, prm_files, filename_scatter,
+                     title=title_scatter)
+    hot.plot_rmaps(nhd_file, prm_files, filename_maps,
+                   title=title_rmaps)
 
     return
 

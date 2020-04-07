@@ -285,7 +285,8 @@ def plot_rmaps(file_in_nhd, files_in_prm, file_out_plot, title=None):
     }
 
     if title is None:
-        title = "Correlation between antecedent precipitation and number of JJA hot days"
+        title = ("Correlation between antecedent precipitation and "
+                 "number of JJA hot days")
 
     nhd = iris.load_cube(file_in_nhd, "Number of hot days")
 
