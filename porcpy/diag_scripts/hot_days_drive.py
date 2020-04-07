@@ -14,11 +14,11 @@ import hot_days as hot
 def _get_filename(var_meta, cfg, extension="nc"):
     """Return a filename for output data, e.g., number of hot days."""
     basename = "_".join([
-        var_meta["short_name"],
         var_meta["project"],
         var_meta["dataset"],
         var_meta["exp"],
         var_meta["ensemble"],
+        var_meta["short_name"],
         str(var_meta["start_year"]),
         str(var_meta["end_year"]),
     ])
@@ -29,11 +29,15 @@ def _get_filename(var_meta, cfg, extension="nc"):
 
 def _get_plot_filename(var_meta, cfg, label):
     """Return an output filename for plots."""
-    basename = "_".join([var_meta["project"],
-                         var_meta["dataset"],
-                         var_meta["exp"],
-                         var_meta["ensemble"],
-                         label])
+    basename = "_".join([
+        var_meta["project"],
+        var_meta["dataset"],
+        var_meta["exp"],
+        var_meta["ensemble"],
+        label,
+        str(var_meta["start_year"]),
+        str(var_meta["end_year"]),
+    ])
 
     filename = get_plot_filename(basename, cfg)
     return filename
