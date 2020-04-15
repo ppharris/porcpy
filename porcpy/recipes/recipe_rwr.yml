@@ -29,8 +29,7 @@ diagnostics:
         mip: 3hr
         field: T23s
         start_year: 1979
-        end_year: 1979
-        fx_files: [sftlf]
+        end_year: 1980
         local_time: 12.0
       tslsi:
         <<: *var_opt
@@ -41,6 +40,8 @@ diagnostics:
       pr:
         <<: *var_opt
         local_time: 9.0
+      sftlf:
+        mip: fx
 
     scripts:
       rwr:

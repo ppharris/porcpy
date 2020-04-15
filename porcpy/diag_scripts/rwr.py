@@ -44,10 +44,12 @@ def _get_time_axis(filename, means=False):
     return ut_out, (pad_beg, pad_end)
 
 
-def _get_model_grid(var_meta):
+def _get_model_grid(input_data):
     """Make a LandGrid object from stflf."""
 
-    sftlf_file = var_meta['fx_files']['sftlf']
+    var_meta = select_metadata(input_data, short_name="sftlf")[0]
+
+    sftlf_file = var_meta["filename"]
     logger.info(sftlf_file)
 
     model_grid = read_grid(sftlf_file)
@@ -121,7 +123,7 @@ def make_daily_var(cfg, input_data, short_name, getweights, metadata,
     var_name = var_meta["short_name"]
     local_time = var_meta["local_time"]
 
-    model_grid, file_sftlf = _get_model_grid(var_meta)
+    model_grid, file_sftlf = _get_model_grid(input_data)
 
     ut_var, ts_pad = _get_time_axis(files_var[0])
     logger.info("ts_pad = %s", ts_pad)
@@ -180,7 +182,9 @@ def make_rwr(cfg, dataset, input_data):
     ###########################################################################
     # Calculate global dry spell RWR.
     ###########################################################################
-    file_sftlf = var_meta["fx_files"]["sftlf"]
+    sftlf_meta = select_metadata(input_data, short_name="sftlf")[0]
+    file_sftlf = sftlf_meta["filename"]
+
     rwr_meta = {k: var_meta[k] for k in keys}
     rwr_meta["short_name"] = "rwr"
     file_out_rwr = _get_filename(rwr_meta, cfg)
@@ -206,11 +210,12 @@ def make_plot(cfg, input_data, file_rwr):
     """Plot a global RWR map like those in Gallego-Elvira et al (2019)."""
 
     var_meta = select_metadata(input_data, short_name="pr")[0]
+    sftlf_meta = select_metadata(input_data, short_name="sftlf")[0]
 
     keys = ["project", "dataset", "exp", "ensemble", "start_year", "end_year"]
     meta = {k: var_meta[k] for k in keys}
 
-    file_sftlf = var_meta["fx_files"]["sftlf"]
+    file_sftlf = sftlf_meta["filename"]
     file_plot = _get_plot_filename(var_meta, cfg)
     title = ("Dry spell RWR (°C day⁻¹), {project}, {dataset}, {exp}, "
              "{ensemble}, {start_year}-{end_year}".format(**meta))
