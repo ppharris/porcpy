@@ -1,5 +1,7 @@
 # porcpy
-Climate model diagnostics for PORCELAIN 
+Climate model diagnostics for PORCELAIN.
+
+See the [attached wiki](https://github.com/ppharris/porcpy/wiki) for instructions on how to install and use this code.
 
 ## Acknowledgement
 This work and its contributors were supported by the UK-China Research &
