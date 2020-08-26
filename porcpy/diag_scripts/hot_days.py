@@ -1,5 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+"""Calculate relationship between rainfall and hot days via ESMValTool.
+
+This script is based on code contributed by Phil Harris and Semeena
+Shamsudheen Valiyaveetil.
+
+"""
 
 from cartopy.feature import COASTLINE, BORDERS
 from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER

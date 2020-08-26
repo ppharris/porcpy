@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+
+"""Calculate land-atmosphere coupling indices via ESMValTool.
+
+This script is based on code contributed by Omar Müller.
+
+"""
+
 import cartopy.crs as ccrs
 import iris
 import iris.analysis.stats as istats

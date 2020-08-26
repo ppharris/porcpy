@@ -1,5 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+"""Calculate dry spell relative warming rate via ESMValTool.
+
+This script is based on code contributed by Phil Harris and Belen
+Gallego-Elvira.
+
+"""
 
 import logging
 import netCDF4 as nc
